@@ -1,0 +1,21 @@
+# Secrets - never commit
+.vb-secrets/
+gh/
+token.txt
+*.token
+
+# Copyrighted third-party papers (cite them in the bib instead of redistributing)
+papers/
+
+# Build/docker logs and scratch
+*.log
+/tmp/
+
+# Large binaries not needed to reproduce the analysis (rebuilt by Docker/CMake)
+*.so
+*.dll
+*.exe
+build-riscv/
+build-x64/
+__pycache__/
+*.pyc

@@ -1,0 +1,15 @@
+FROM vb-riscv3
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    make pkg-config libglib2.0-dev meson xz-utils python3-venv bzip2 \
+    && rm -rf /var/lib/apt/lists/*
+RUN (wget -q -O /tmp/qemu.tar.gz https://gitlab.com/qemu-project/qemu/-/archive/v10.0.13/qemu-v10.0.13.tar.gz \
+     || wget -q -O /tmp/qemu.tar.gz https://gitlab.com/qemu-project/qemu/-/archive/stable-10.0/qemu-stable-10.0.tar.gz) \
+    && mkdir /tmp/qemu-src && tar -xzf /tmp/qemu.tar.gz -C /tmp/qemu-src --strip-components=1 \
+    && rm /tmp/qemu.tar.gz
+RUN cd /tmp/qemu-src \
+    && ./configure --target-list=riscv64-linux-user --enable-plugins --disable-docs \
+    && make -j"$(nproc)" \
+    && cp build/qemu-riscv64 /usr/local/bin/qemu-riscv64-plugins \
+    && cp include/qemu/qemu-plugin.h /usr/local/include/qemu-plugin.h \
+    && cd / && rm -rf /tmp/qemu-src
+RUN /usr/local/bin/qemu-riscv64-plugins --version && /usr/local/bin/qemu-riscv64-plugins -h | grep -c plugin

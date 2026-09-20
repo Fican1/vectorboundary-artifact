@@ -1,0 +1,9 @@
+host,vlen,schedule,test,t_per_s,model,n_threads
+qemu,256,default,pp32,3.593688,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,default,tg8,2.059384,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,q4_0_8x1,pp32,2.249642,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,q4_0_8x1,tg8,1.489499,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,q4_0_8x8,pp32,2.439501,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,q4_0_8x8,tg8,1.510011,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,norepack,pp32,1.332911,SmolLM2-135M-Instruct-Q4_0.gguf,2
+qemu,256,norepack,tg8,1.107042,SmolLM2-135M-Instruct-Q4_0.gguf,2

@@ -1,0 +1,6 @@
+FROM vb-riscv2
+RUN apt-get update && apt-get install -y --no-install-recommends gcc libc6-dev wget \
+    && rm -rf /var/lib/apt/lists/* \
+    && (wget -q -O /usr/local/include/qemu-plugin.h https://gitlab.com/qemu-project/qemu/-/raw/v10.0.13/include/qemu/qemu-plugin.h \
+        || wget -q -O /usr/local/include/qemu-plugin.h https://gitlab.com/qemu-project/qemu/-/raw/stable-10.0/include/qemu/qemu-plugin.h) \
+    && head -5 /usr/local/include/qemu-plugin.h
